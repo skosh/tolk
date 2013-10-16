@@ -2,8 +2,6 @@ module Tolk
   class Phrase < ActiveRecord::Base
     self.table_name = "tolk_phrases"
 
-    attr_accessible :key
-
     validates_uniqueness_of :key
 
     cattr_accessor :per_page
@@ -22,7 +20,7 @@ module Tolk
     attr_accessor :translation
 
     scope :containing_text, lambda { |query|
-      { :conditions => ["tolk_phrases.key LIKE ?", "%#{query}%"] }
+      where("tolk_phrases.key LIKE ?", "%#{query}%")
     }
   end
 end

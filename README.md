@@ -30,7 +30,7 @@ As tolk stores all the keys and translated strings in the database, you need to 
 ```bash
   $ rake tolk:sync
 ```
-  
+
 The above will fetch all the new keys from en.yml and put them in the database. Additionally, it'll also get rid of the deleted keys from the database and reflect updated translations - if any.
 
 If you already have data in your non primary locale files, you will need to import those to Tolk as a one time thing :

@@ -39,7 +39,7 @@ module Tolk
     end
 
     def create
-      Tolk::Locale.create!(params[:tolk_locale])
+      Tolk::Locale.create!(tolk_locale_params)
       redirect_to :action => :index
     end
 
@@ -70,6 +70,10 @@ module Tolk
 
     def find_locale
       @locale = Tolk::Locale.where('UPPER(name) = UPPER(?)', params[:id]).first!
+    end
+
+    def tolk_locale_params
+      params.require(:tolk_locale).permit(:name)
     end
   end
 end
