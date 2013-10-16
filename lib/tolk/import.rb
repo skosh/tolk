@@ -15,12 +15,11 @@ module Tolk
             l.match(/(.*\.){2,}/) # reject files of type xxx.en.yml
         }
         locales = locales.reject(&locale_block_filter).map {|x| x.split('.').first }
-        locales = locales - [Tolk::Locale.primary_locale.name]
         locales.each {|l| import_locale(l) }
       end
 
       def import_locale(locale_name)
-        locale = Tolk::Locale.find_or_create_by_name(locale_name)
+        locale = Tolk::Locale.find_or_create_by(:name => locale_name)
         data = locale.read_locale_file
         return unless data
 
