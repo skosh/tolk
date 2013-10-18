@@ -12,7 +12,7 @@ module Tolk
           @phrases = @locale.phrases_without_translation(params[:page])
         end
 
-        format.atom { @phrases = @locale.phrases_without_translation(params[:page], :per_page => 50) }
+        format.atom { @phrases = @locale.phrases_without_translation(params[:page]) }
 
         format.yaml do
           data = @locale.to_hash

@@ -32,7 +32,7 @@
             </td>
             <td class="original">
               <%= text_area_tag :"translations[][original_text]", format_i18n_text_area_value(phrase.translations.primary.text), :disabled => true %>
-              
+
               <% if action_name == 'updated' %>
                 <div class="updated">
                   <span class="key">Updated</span>
@@ -58,7 +58,7 @@
       <p><%= locale_form.submit "Save changes", :class => 'save' %></p>
     </div>
     <div class="paginate">
-      <%= will_paginate @phrases %>
+      <%= paginate @phrases %>
     </div>
   <% end %>
 <% else %>
